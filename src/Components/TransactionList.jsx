@@ -1,12 +1,12 @@
+import { useContxt } from "../context/GlobalState";
+import Transaction from "./Transaction";
 function TransactionList() {
+  const {transactions,deleteTransaction} = useContxt()
   return (
     <>
       <h3>History</h3>
-      <ul id="list" className="list">
-        <li className="minus">
-          Cash <span>-$400</span>
-          <button className="delete-btn">x</button>
-        </li>
+      <ul className="list">
+        {transactions.map((newdata)=>(<Transaction key={newdata.id} newdata={newdata} deleteTransaction={deleteTransaction} />))}
       </ul>
     </>
   );
